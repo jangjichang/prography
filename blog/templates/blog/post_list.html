@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container">
+    <nav class="row">
+        <div class="col-sm-12">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col" style="width: 8.33%">#</th>
+                        <th scope="col">글 제목</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for post in post_list %}
+                        <tr>
+                            <th scope="row">
+                                {{ post.id }}
+                            </th>
+                            <td>
+                                <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="col-sm-12">
+            <a href="{% url 'blog:post_create' %}" class="btn btn-primary pull-right">새 글쓰기</a>
+        </div>
+
+        <nav aria-label="Page navigation example">
+            <center>
+                {% if is_paginated %}
+                    <ul class="pagination justify-content-center">
+                        {% if page_obj %}
+                            {% if page_obj.has_previous %}
+                                <li>
+                                    <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-primary">이전</a>
+                                </li>
+                            {% else %}
+                                <li class="page-item disabled">
+                                    <a href="#" style="background-color:rgba(18, 31, 18, 0.774);">이전</a>
+                                </li>
+                            {% endif %}
+                            
+                            {% for i in paginator.page_range %}
+                                {% if page_obj.number == i %}
+                                    <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                                {% else %}
+                                    <li><a href="?page={{ i }}">{{ i }}</a></li>
+                                {% endif %}
+                            {% endfor %}
+
+                            
+                            {% if page_obj.has_next %}
+                                <li>
+                                    <a href="?page={{ page_obj.next_page_number }}" class="btn btn-default">다음</a>
+                                </li>
+                            {% else %}
+                                <li class="page-item disabled">
+                                    <a href="#" style="background-color:rgba(18, 31, 18, 0.774);">다음</a>
+                                </li>
+                            {% endif %}
+                        {% endif %}
+                    </ul>
+                {% endif %}
+            </center>
+        </nav>
+    </div>
+</div>
+{% endblock %}
