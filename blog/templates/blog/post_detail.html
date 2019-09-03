@@ -45,12 +45,31 @@
             &nbsp;
         </div>
     </div>
+
     <div class="row">
         <div class="col-sm-12">
-            <a href="{% url 'blog:post_list' %}">
-                <button type="button" class="btn btn-secondary btn-lg btn-block">
-                    목록으로
-                </button>
+            <h4>{{ post.comment_set.all.count }}개의 댓글 목록</h3>
+            <ul class="list-group">
+                {% for comment in post.comment_set.all %}
+                    <li class="list-group-item list-group-item-info">
+                        {{ comment.author }}님
+                    </li>
+                    <li class="list-group-item">
+                        {{ comment.content }}
+                        <p class="text-right">&nbsp; <a href="{% url 'blog:comment_delete' post.pk comment.pk %}" class="btn btn-danger">삭제</a> <a href="{% url 'blog:comment_update' post.pk comment.pk %}" class="btn btn-info">수정</a></p>
+                    </li>
+                {% endfor %}
+                <a href="{% url 'blog:comment_create' post.pk %}" class="btn btn-primary btn-block">
+                    새 댓글 작성하기
+                </a>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <a href="{% url 'blog:post_list' %}" class="btn btn-success btn-block">
+                목록으로 이동
             </a>
         </div>
     </div>
