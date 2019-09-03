@@ -10,6 +10,7 @@ class PostListView(ListView):
     template_name = 'blog/index.html'
     paginate_by = 7
 
+    ordering = ['-created_at']
 
 class PostCreateView(CreateView):
     model = Post
@@ -22,7 +23,7 @@ class PostDetailView(DetailView):
 
 class PostDeleteView(DeleteView):
     model = Post
-    success_url = reverse_lazy('blog:index')
+    success_url = reverse_lazy('blog:post_index')
 
 
 class PostUpdateView(UpdateView):

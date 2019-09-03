@@ -4,11 +4,54 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-12">
-            <h1>{{ post.title }}</h1>
-            {{ post.content|linebreaks }}
-
-            <hr>
-
+            <table class="table table-bordered">
+                <tr>
+                    <td scope="col" style="width: 8.33%">
+                        <strong>제목</strong>
+                    </td>
+                    <td>
+                        {{ post.title }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>내용</strong>
+                    </td>
+                    <td>
+                        {{ post.content|linebreaks }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>작성자</strong>
+                    </td>
+                    <td>
+                        {{ post.author }}
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="pull-right">
+                <a href="{% url 'blog:post_delete' post.pk %}" class="btn btn-danger">삭제</a>
+                <a href="{% url 'blog:post_update' post.pk %}" class="btn btn-primary">수정</a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            &nbsp;
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <a href="{% url 'blog:post_list' %}">
+                <button type="button" class="btn btn-secondary btn-lg btn-block">
+                    목록으로
+                </button>
+            </a>
         </div>
     </div>
 </div>

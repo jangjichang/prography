@@ -1,0 +1,19 @@
+{% extends "blog/layout.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="alert alert-danger">
+                <strong>주의! </strong> &nbsp; 한번 삭제하면 복구할 수 없습니다. 그래도 삭제하시겠습니까?
+                <br><br>삭제를 원하시면 아래 '삭제하기' 버튼을 클릭하세요.
+                </div>
+            <form action="" method="post">
+                {% csrf_token %}
+                <input type="submit" class="btn btn-danger" value="삭제하기">
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
