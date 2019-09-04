@@ -4,4 +4,4 @@
 - Django를 이용한 게시판 제작, 서버 배포
 
 # Demo
-- url
+- [https://prography5th.herokuapp.com](https://prography5th.herokuapp.com)
