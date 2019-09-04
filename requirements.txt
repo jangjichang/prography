@@ -4,3 +4,4 @@ django-heroku
 whitenoise
 gunicorn
 psycopg2
+django-bootstrap4==1.0.1
