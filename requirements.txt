@@ -1,0 +1,6 @@
+Django==2.1
+pillow
+django-heroku
+whitenoise
+gunicorn
+psycopg2

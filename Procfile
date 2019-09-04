@@ -1,0 +1,1 @@
+web: gunicorn prography.wsgi --log-file -
